@@ -41,26 +41,12 @@ class RandomUserController extends Controller
     {
         if ((bool) $request->input('addUsers')) {
             $users = $this->getUsers();
-            foreach($users['results'] as $user) {
-                $data[] = [
-                    'name' => $user['name']['first'] . ' ' . $user['name']['last'],
-                    'age' => $user['dob']['age'],                     		
-                    'gender' => $user['gender'],
-                    'city' => $user['location']['city'],
-                    'country' => $user['location']['country'],
-                    'email' => $user['email'],
-                    'salt' => $user['login']['salt'],
-                    'passwsha256' => $user['login']['sha256'],
-                    'image_url' => $user['picture']['medium'],
-                    'image' => $this->getPhotos($user['picture']['medium'])
-                ];
+            if ($this->insertUsers($users)) {
+                return redirect()->back();
             }
-            
         }
-
-        RandomUsers::insert($data);
-
-        return redirect()->back();
+        
+        #  return 
     }
 
     /**
@@ -138,5 +124,29 @@ class RandomUserController extends Controller
         curl_close($ch);
         
         return $result;        
+    }
+
+    public function insertUsers(array $users)
+    {
+        foreach($users['results'] as $user) {
+            $data[] = [
+                'name' => $user['name']['first'] . ' ' . $user['name']['last'],
+                'age' => $user['dob']['age'],                     		
+                'gender' => $user['gender'],
+                'city' => $user['location']['city'],
+                'country' => $user['location']['country'],
+                'email' => $user['email'],
+                'salt' => $user['login']['salt'],
+                'passwsha256' => $user['login']['sha256'],
+                'image_url' => $user['picture']['medium'],
+                'image' => $this->getPhotos($user['picture']['medium'])
+            ];
+        }
+
+        if (RandomUsers::insert($data)) {
+            return true;
+        }
+
+        return false;
     }
 }
