@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use App\Http\Controllers\RandomUserController;
 use App\Models\RandomUsers;
 
-class getUsers extends Command{
+class GetUsers extends Command{
     /**
      * The name and signature of the console command.
      *
