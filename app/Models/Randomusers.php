@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Randomusers extends Model
+class RandomUsers extends Model
 {
     use HasFactory;
 
-    protected $table = 'randomuser';
+    protected $table = 'randomusers';
     protected $primaryKey = 'id';
 
     protected $fillable = [
@@ -19,6 +19,7 @@ class Randomusers extends Model
         'gender',
         'city',
         'country',
+        'email',
         'salt',
         'passwsha256',
         'image_url',
@@ -32,6 +33,7 @@ class Randomusers extends Model
         'gender' => 'string',
         'city' => 'string',
         'country' => 'string',
+        'email' => 'string',
         'salt' => 'string',
         'passwsha256' => 'string',
         'image_url' => 'string'

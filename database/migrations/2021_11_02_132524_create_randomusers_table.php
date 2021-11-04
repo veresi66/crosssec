@@ -20,6 +20,7 @@ class CreateRandomusersTable extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->string('city', 50);
             $table->string('country', 50);
+            $table->string('email', 100);
             $table->char('salt', 8);
             $table->char('passwsha256', 64);
             $table->string('image_url', 60);

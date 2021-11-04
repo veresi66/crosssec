@@ -1,0 +1,37 @@
+.btn.btn-add {
+    margin: .7em 0;
+}
+
+.table .thead-dark div.th {
+    color: #FFF;
+    background-color: #343A40;
+    display: table-cell;
+    vertical-align: middle;
+    border-bottom: 2px solid #454D55;
+    border-right: 2px solid #454D55;
+    font-weight: bold;
+    padding: .75rem;
+}
+
+.table .tbody-striped .td {
+    padding: .75rem;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    border-bottom: 2px solid #454D55;
+    border-right: 2px solid #454D55;
+}
+
+.col.colspan-2.td,
+.col-2.td.last-td {
+    border-right: none;
+}
+
+.tbody-striped .tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, .05)
+}
+
+div.row.tr:hover {
+    color: #212529;
+    background-color: rgba(0, 0, 0, .075)
+}

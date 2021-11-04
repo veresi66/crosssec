@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\RandomUserController;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +22,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [RandomUserController::class, 'index'])->name('home');
+Route::get('/', [RandomUserController::class, 'index'])->name('index');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::resource('/getUsers', RandomUserController::class);
