@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  mariadb:
+    image: docker.io/bitnami/mariadb:10.2
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MARIADB_USER=crosssec
+      - MARIADB_DATABASE=crosssecuser
+      - MARIADB_PASSWORD=Password1
+
+  crosssec:
+    tty: true
+    image: docker.io/bitnami/laravel:8
+    environment:
+      - DB_HOST=mariadb
+      - DB_USERNAME=crosssec
+      - DB_DATABASE=crosssecuser
+      - DB_PASSWORD=Password1
+    depends_on:
+      - mariadb
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/app

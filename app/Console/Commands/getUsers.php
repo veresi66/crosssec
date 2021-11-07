@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Http\Controllers\RandomUserController;
-use App\Models\RandomUsers;
 
 class GetUsers extends Command{
     /**
@@ -12,14 +11,14 @@ class GetUsers extends Command{
      *
      * @var string
      */
-    protected $signature = 'randomuser:getUsers';
+    protected $signature = 'randomuser:getUsers {num?}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Get 10 users from https://randomuser.me';
+    protected $description = 'Get users from https://randomuser.me';
 
     /**
      * Create a new command instance.
@@ -38,11 +37,14 @@ class GetUsers extends Command{
      */
     public function handle()
     {
+        $num = (($this->argument('num') == 10) || ($this->argument('num') == NULL)) ? 10 : (int) $this->argument('num');
         $controller = new RandomUserController();
-        $users = $controller->getUsers();
+        $users = $controller->getUsers($num);
 
-        $controller->insertUsers($users);
-
-        echo 'Succes! 10 users inserted!';
+        if ($controller->insertUsers($users)) {
+            echo 'Succes! ' . $num . ' users inserted!';
+        } else {
+            echo 'An error has occurred in the connection.';
+        }
     }
 }

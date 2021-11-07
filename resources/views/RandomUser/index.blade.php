@@ -57,44 +57,6 @@
 @endforeach
 @else
                         <div class="row tr">
-                            <div class="col-9">
-                                <div class="row">
-                                    <div class="col-1 td">{{ __('ID') }}</div>
-                                    <div class="col-8 td">{{ __('Name') }}</div>
-                                    <div class="col-2 td">{{ __('Gender') }}</div>
-                                    <div class="col-1 td">{{ __('Age') }}</div>                                
-                                </div>
-                                <div class="row">
-                                    <div class="col td">{{ __('City') }}</div>
-                                    <div class="col td">{{ __('Country') }}</div>
-                                    <div class="col td">{{ __('Salt') }}</div>                                  
-                                </div>
-                                <div class="row">
-                                    <div class="col td">{{ __('Password sha256 hash') }}</div>
-                                </div>
-                            </div>
-                            <div class="col-3 td last-td">{{ __('Image') }}</div>                        
-                        </div>
-                        <div class="row tr">
-                            <div class="col-9">
-                                <div class="row">
-                                    <div class="col-1 td">{{ __('ID') }}</div>
-                                    <div class="col-8 td">{{ __('Name') }}</div>
-                                    <div class="col-2 td">{{ __('Gender') }}</div>
-                                    <div class="col-1 td">{{ __('Age') }}</div>                                
-                                </div>
-                                <div class="row">
-                                    <div class="col td">{{ __('City') }}</div>
-                                    <div class="col td">{{ __('Country') }}</div>
-                                    <div class="col td">{{ __('Salt') }}</div>                                  
-                                </div>
-                                <div class="row">
-                                    <div class="col td">{{ __('Password sha256 hash') }}</div>
-                                </div>
-                            </div>
-                            <div class="col-3 td last-td">{{ __('Image') }}</div>                        
-                        </div>
-                        <div class="row tr">
                             <div class="col td colspan-2">There's nothing to do!</div>
                         </div>
 @endif

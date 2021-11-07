@@ -14,8 +14,6 @@ class RandomUserController extends Controller
      */
     public function index()
     {
-        //$rUsers = RandomUsers::paginate(10);
-        
         return view('RandomUser.index', [
             'data' => RandomUsers::paginate(10)
         ]);
@@ -45,8 +43,6 @@ class RandomUserController extends Controller
                 return redirect()->back();
             }
         }
-        
-        #  return 
     }
 
     /**
@@ -94,17 +90,35 @@ class RandomUserController extends Controller
         die('The request cannot be executed!');
     }
 
-    public function getUsers(int $num = 10)
-    {   
+    /**
+     * Felhasználók lekérése a https://randomuser.me API-n keresztül
+     * 
+     * @param int $num
+     * @return array
+     */
+    public function getUsers(int $num = 10) : array
+    {
         return json_decode($this->curlGet('https://randomuser.me/api/?results=' . $num), true);
     }
 
-    public function getPhotos($url)
+    /**
+     * Lekéri a megadott URL-ről a felhasználó képét
+     * 
+     * @param string $url
+     * @return string
+     */
+    public function getPhotos($url) : string
     {
-        return $this->curlGet($url); 
+        return $this->curlGet($url);
     }
 
-    private function curlGet(string $url)
+    /**
+     * Külső API elérése CURL segítségével
+     * 
+     * @param string $url
+     * @return string
+     */
+    private function curlGet(string $url) : string
     {
         $ch = curl_init();
 
@@ -116,22 +130,25 @@ class RandomUserController extends Controller
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_SSL_VERIFYHOST => 0
         ]);
-        
-        if( ! $result = curl_exec($ch)) {
+
+        if (!$result = curl_exec($ch)) {
             trigger_error(curl_error($ch));
         }
-        
+
         curl_close($ch);
-        
-        return $result;        
+
+        return $result;
     }
 
-    public function insertUsers(array $users)
+    /**
+     * A felhasználó(k) beszúrását végző fügvény, mivel két hely
+     */
+    public function insertUsers(array $users) : bool
     {
-        foreach($users['results'] as $user) {
+        foreach ($users['results'] as $user) {
             $data[] = [
                 'name' => $user['name']['first'] . ' ' . $user['name']['last'],
-                'age' => $user['dob']['age'],                     		
+                'age' => $user['dob']['age'],
                 'gender' => $user['gender'],
                 'city' => $user['location']['city'],
                 'country' => $user['location']['country'],
