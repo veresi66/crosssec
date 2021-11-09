@@ -141,7 +141,10 @@ class RandomUserController extends Controller
     }
 
     /**
-     * A felhasználó(k) beszúrását végző fügvény, mivel két hely
+     * A felhasználó(k) beszúrását végző fügvény
+     * 
+     * @param array $users
+     * @return bool
      */
     public function insertUsers(array $users) : bool
     {
