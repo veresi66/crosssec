@@ -1,11 +1,28 @@
 # Felhasználó kezelő alkalmazás Laravel alapokon
 
-## Crosssec Solution beugró feladata
+## A feladat leírása
 
-A beugró feladat elérhető ezen a [GitHub linken](https://gist.github.com/laszloandras/47ea3daf9590efc3711cd158a5b25513) keresztül.
+A próbafeladat célja egy interfész elkészítése egy külső alkalmazás és a sajátunk között.
+
+A saját alkalmazásunk rendelkezzen egy táblával, amiben a felhasználói adatokat tároljuk. 
+Ezek az adatok a következők: név (vezeték- és keresztnév egy mezőben), életkor, nem, város, ország, email, salt, 
+a jelszó sha256-os hash-e illetve a profilképe.
+
+A felhasználói adatok egy külső szolgáltatásból kerülnek át a miénkbe. 
+A külső szolgáltatás megfelelő API végpontját meghívva egy szabványos JSON választ küld nekünk a felhasználók adataival, 
+amit feldolgozunk és eltárolunk. Az adatok átvételére legyen lehetőség manuálisan a háttérben is, 
+például egy parancs meghívásával. Egyszerre 10 felhasználó adatait emeljük át.
+
+A használandó szolgáltatás a következő: https://randomuser.me
+
+Az alkalmazást PHP nyelven készítsd el, egy szimpatikus keretrendszer felhasználásával.
+
+Az elkészült alkalmazást lehetőleg verziókövetőn megosztva szeretnénk megkapni a futtatás mikéntjét bemutató leírással, 
+esetleg egy egyszerű konténer megoldással együtt.
+
+------
 
 Az általam elkészített megoldás Laravel framework felhasználásával készült.
-
 
 ## A program használata
 ### Grafikus felület
